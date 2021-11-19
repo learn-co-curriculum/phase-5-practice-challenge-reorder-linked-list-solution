@@ -3,40 +3,45 @@
 To complete this challenge, you need to traverse through each adjacent odd/even
 **pair** of nodes, pair by pair. In each step, you adjust the current odd node's
 `next_node` property to point to the next odd node in the list, and the current
-even node's `next_node` property to the next even node in the list. This
-effectively creates two separate lists: one containing the odd nodes and the
-other containing the even nodes. FInally, when the end of the list is reached,
-the `next_node` property of the last odd node is then set to the first even
-node, which combines the two lists with the odd nodes first.
+even node's `next_node` property to the next even node in the list.
+
+This effectively creates two separate lists: one containing the odd nodes and
+the other containing the even nodes. Finally, when the end of the list is
+reached, the `next_node` property of the last odd node is then set to the first
+even node, which combines the two lists with the odd nodes first.
 
 ## Solution
 
 ```rb
-  def reorder_linked_list
-    if !!head
-      # set odd to the first odd node and even to the first even node
-      odd = head
-      even = head.next_node
-      # keep a reference to the first even node
-      even_head = even
-      
-      while even && even.next_node
-        # change odd's next_node property to point to the next odd node
-        odd.next_node = even.next_node
-        # reset the odd variable to that node
-        odd = odd.next_node
-        # change even's next_node property to point to the node after
-        # the new odd node, i.e., the next even node
-        even.next_node = odd.next_node
-        # reset the even variable to that node
-        even = even.next_node
-      end
+def reorder_linked_list
+  # if the list is empty, no need to continue
+  return if head.nil?
 
-      # change the next_node property of the last odd node to point to the first even node
-      odd.next_node = even_head
-    end
-    head
+  # set odd to the first odd node and even to the first even node
+  odd = head
+  even = head.next_node
+
+  # keep a reference to the first even node
+  even_head = even
+
+  while even && even.next_node
+    # change odd's next_node property to point to the next odd node
+    odd.next_node = even.next_node
+
+    # reset the odd variable to that node
+    odd = odd.next_node
+
+    # change even's next_node property to point to the node after
+    # the new odd node, i.e., the next even node
+    even.next_node = odd.next_node
+
+    # reset the even variable to that node
+    even = even.next_node
   end
+
+  # change the next_node property of the last odd node to point to the first even node
+  odd.next_node = even_head
+end
 ```
 
 We start by setting our `odd` pointer variable to the `head` and `even` to the
@@ -105,7 +110,7 @@ A two-pointer approach can be used to reverse a string or an array:
 def reverse_the_string(str)
   i = 0
   j = str.length - 1
-  while i < str.length/2
+  while i < str.length / 2
     temp = str[i]
     str[i] = str[j]
     str[j] = temp
@@ -115,7 +120,7 @@ def reverse_the_string(str)
   str
 end
 
-reverse_the_string("abcde")
+reverse_the_string('abcde')
 # => "edcba"
 ```
 
@@ -126,7 +131,7 @@ creating a temporary variable and shortens the swap to a single line:
 def reverse_the_string(str)
   i = 0
   j = str.length - 1
-  while i < str.length/2
+  while i < str.length / 2
     str[i], str[j] = str[j], str[i]
     i += 1
     j -= 1
@@ -165,7 +170,8 @@ find_midpoint([1, 2, 3, 4, 5, 6])
 # => 4
 ```
 
-> Note: this same technique can be used to find the middle node in a linked list.
+> Note: this same technique can be used to find the middle node in a linked
+> list.
 
 There are many other problems for which the two-pointer technique can be used.
 As you gain experience working on algorithms, you will get better at recognizing
