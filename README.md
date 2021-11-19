@@ -85,9 +85,10 @@ Space: O(1)
 
 Time: we traverse the linked list once, giving a time complexity of O(n).
 
-Space: The extra variables we are using here our two pointers, `odd` and `even`,
-and the `head_even` variable to hold the value of the first even node. None of
-these variables grow with the size of the input so the space complexity is O(1).
+Space: The extra variables we are using here are our two pointers, `odd` and
+`even`, and the `head_even` variable, which stores the value of the first even
+node. None of these variables grow with the size of the input so the space
+complexity is O(1).
 
 ## The Two-Pointer Approach
 
