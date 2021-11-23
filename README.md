@@ -1,4 +1,4 @@
-# Phase 5 Reorder Linked List Practice Challenge: Solution
+# Practice Challenge Solution: Reorder Linked List
 
 To complete this challenge, you need to traverse through each adjacent odd/even
 **pair** of nodes, pair by pair. In each step, you adjust the current odd node's
